@@ -15,5 +15,7 @@ def init_app():
     from routes import init_routes
     init_routes( app )
 
+    app.run()
+
 app = Flask(__name__)
 init_app()
