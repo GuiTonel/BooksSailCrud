@@ -1,13 +1,14 @@
 from models.user import UserSchema
 
 user_schema = UserSchema()
-def user_schema_dump_return( func ):
-    def a( *args ):
-        return user_schema.dump( func( args[0] ) )
-    return a
-
 users_schema = UserSchema( many = True )
-def users_schema_dump_return( func ):
-    def a():
-        return users_schema.dumps( func() )
+
+def user_schema_dump_return( func ):
+    def a( *args, **kwargs ):
+        user = func( *args, **kwargs )
+
+        if type( user ) == list:
+            return users_schema.dumps( user )
+
+        return user_schema.dump( user )
     return a

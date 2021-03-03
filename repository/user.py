@@ -1,12 +1,9 @@
 from repository import db
-from models.user import UserSchema, User
+from models.user import User
 
-from utils.user import user_schema_dump_return, users_schema_dump_return
+from utils.user import user_schema_dump_return
 
-user_schema = UserSchema()
-users_schema = UserSchema( many = True )
-
-@users_schema_dump_return
+@user_schema_dump_return
 def find_users():
     users = User.query.all()
     return users

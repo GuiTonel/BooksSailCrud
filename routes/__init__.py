@@ -1,7 +1,7 @@
-from .user import bp_user as user_routes
-
 from .user import *
+from .book import *
 
 def init_routes( app ):
-    app.register_blueprint( user_routes )
+    app.register_blueprint( bp_user )
+    app.register_blueprint( bp_book )
     
