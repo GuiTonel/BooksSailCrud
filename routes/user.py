@@ -16,3 +16,7 @@ def get_user_by_id( id_usuario ):
 @bp_user.route( '/cadastrar', methods = ['POST'] )
 def insert_user():
     return user_controller.insert_user( request.get_json() )
+
+@bp_user.route( '/login', methods = ['GET'] )
+def login():
+    return user_controller.login( request.get_json() )

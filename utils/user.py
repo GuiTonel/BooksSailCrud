@@ -12,3 +12,10 @@ def user_schema_dump_return( func ):
 
         return user_schema.dump( user )
     return a
+
+def user_model_load_return( func ):
+    def a( *args, **kwargs ):
+        user = func( *args, **kwargs )
+
+        return user_schema.load( user_schema.dump( user ) )
+    return a

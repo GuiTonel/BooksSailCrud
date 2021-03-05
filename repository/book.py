@@ -14,9 +14,7 @@ def find_book_by_id( id_usuario ):
     return book
 
 @book_schema_dump_return
-def insert_book( book_json ):
-    book = Book( book_json['nome'], book_json['autor'] )
-
+def insert_book( book ):
     db.session.add( book )
     db.session.commit()
 

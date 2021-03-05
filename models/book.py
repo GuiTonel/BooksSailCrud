@@ -1,11 +1,6 @@
 #Database_Model
 from repository import db
 class Book( db.Model ):
-    def __init__( self, nome, autor ):
-        super().__init__()
-        self.nome = nome
-        self.autor = autor
-
     __tablename__ = 'book'
 
     id = db.Column( db.Integer, primary_key = True )
@@ -14,6 +9,11 @@ class Book( db.Model ):
 
 #Schema
 from flask_marshmallow import Marshmallow
+from marshmallow import post_load
 class BookSchema( Marshmallow().SQLAlchemyAutoSchema ):
     class Meta():
         model = Book
+
+    @post_load
+    def make_book(self, data, **kwargs):
+        return Book(**data)

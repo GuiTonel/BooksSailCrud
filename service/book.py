@@ -6,5 +6,5 @@ def find_books():
 def find_book_by_id( id_usuario ):
     return book_repository.find_book_by_id( id_usuario )
     
-def insert_book( book_json ):
-    return book_repository.insert_book( book_json )
+def insert_book( book ):
+    return book_repository.insert_book( book )
